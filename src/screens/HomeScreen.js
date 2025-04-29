@@ -1,13 +1,17 @@
 import React from "react";
-import { View } from "react-native";
+import { Button, View } from "react-native";
 import MyComponent from "../components/MyComponent";
 
-const HomeScreen = () => {
-    return (
-        <View>
-            <MyComponent/>
-        </View>
-    );
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View>
+      <MyComponent />
+      <Button
+        title="Go"
+        onPress={() => navigation.navigate("Another")}
+      />
+    </View>
+  );
 };
 
 export default HomeScreen;
