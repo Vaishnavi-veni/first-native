@@ -13,6 +13,7 @@ return(
       />
       <View style={{margin:20}}></View>
       <Text style={{fontSize:28,fontWeight:400}}>Welcome Back</Text>
+      
 </View>
 )
 }
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "top",
       alignItems: "center",
+      backgroundColor:"#F1F0E8"
         },
     logo: {
       width: 200,
