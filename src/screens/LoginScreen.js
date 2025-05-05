@@ -1,34 +1,37 @@
 import React from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { globalStyles } from "../constants/styles";
 
 const LoginScreen = () => {
-return(
-<View style={styles.container}>
-    <View style={{marginTop:120,}}> </View>
-    <Image
-      source={require('../../assets/images/logo/stock_careers_logo.png')}
-      style={styles.logo}
-      resizeMode="contain"
+  return (
+    <View style={styles.container}>
+      <View style={{ marginTop: 120 }} />
+      {/* Temporarily comment out image if crash persists */}
+      <Image
+        source={require('../../assets/images/logo/stock_careers_logo.png')}
+        style={styles.logo}
+        resizeMode="contain"
       />
-      <View style={{margin:20}}></View>
-      <Text style={{fontSize:28,fontWeight:400}}>Welcome Back</Text>
-      
-</View>
-)
-}
+      <View style={{ margin: 20 }} />
+      <Text style={{ fontSize: 28, fontWeight: "400" }}>Welcome Back</Text>
+      <View style={globalStyles?.bottomContainer}>
+        <Text>Hii</Text>
+      </View>
+    </View> 
+  );
+};
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "top",
-      alignItems: "center",
-      backgroundColor:"#F1F0E8"
-        },
-    logo: {
-      width: 200,
-      height: 100,
-    },
-  });
+  container: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: "#f4f6f7",
+  },
+  logo: {
+    width: 200,
+    height: 100,
+  },
+});
