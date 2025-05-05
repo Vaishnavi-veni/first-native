@@ -14,8 +14,9 @@ const LoginScreen = () => {
       />
       <View style={{ margin: 20 }} />
       <Text style={{ fontSize: 28, fontWeight: "400" }}>Welcome Back</Text>
-      <View style={globalStyles?.bottomContainer}>
-        <Text>Hii</Text>
+      <View style={[globalStyles?.bottomContainer,{padding:30}]}>
+
+        <Text style={{fontSize:22,marginTop:30}}>Login</Text>
       </View>
     </View> 
   );
