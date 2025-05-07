@@ -5,7 +5,7 @@ import CustomTextField from "../components/CustomTextField";
 
 const LoginScreen = () => {
   const [email,setEmail]= useState('');
-  
+
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 120 }} />
@@ -17,12 +17,12 @@ const LoginScreen = () => {
       />
       <View style={{ margin: 20 }} />
       <Text style={{ fontSize: 28, fontWeight: "400" }}>Welcome Back</Text>
-      <View style={[globalStyles?.bottomContainer,{padding:30}]}>
+      <View style={[globalStyles?.bottomContainer,]}>
 
-        <Text style={{fontSize:22,marginTop:30}}>Login</Text>
-        <View style={{margin:20}} />
+        <Text style={{fontSize:22,marginTop:40,marginLeft:20}}>Login</Text>
+        <View style={{margin:10}} />
         <CustomTextField 
-        placeholder="Enter your email"
+        placeholder="Email"
         value={email}
         onChangeText={(text)=> setEmail(text)}
         />

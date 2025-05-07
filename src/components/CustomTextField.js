@@ -4,14 +4,14 @@ const CustomTextField = ({
     placeholder, value, onChangeText, secureTextEntry = false, style
 }) => {
     return (
-        <View style={StyleSheet.container}>
-            <TextInput
+        <View style={styles.container}>
+            <TextInput 
             placeholder={placeholder}
             value={value}
             onChangeText={onChangeText}
             secureTextEntry={secureTextEntry}
-            placeholderTextColor="#aaa"
-            style ={[StyleSheet.input,style]}
+            placeholderTextColor="#000"
+            style ={[styles.input,style]}
             />
         </View>
     )
@@ -19,15 +19,15 @@ const CustomTextField = ({
 
 const styles = StyleSheet.create({
     container:{
-        width:'100%'
+        width:'100%',
     },
     input : {
         height:50,
-        borderColor:'#ccc',
-        borderWidth:1,
+        borderBottomWidth:1,
+        borderBottomColor:'#000',
         borderRadius:10,
-        paddingHorizontal:15,
-        backgroundColor:'#fff'
+        paddingHorizontal:22,
+        fontSize:14
     }
 })
 
