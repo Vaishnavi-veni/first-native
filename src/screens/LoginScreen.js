@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
 import { globalStyles } from "../constants/styles";
 import CustomTextField from "../components/CustomTextField";
+import CustomButton from "../components/CustomButton";
 
 const LoginScreen = () => {
   const [email,setEmail]= useState('');
+  const [password,setPassword]= useState('');
 
   return (
     <View style={styles.container}>
@@ -25,6 +27,13 @@ const LoginScreen = () => {
         placeholder="Email"
         value={email}
         onChangeText={(text)=> setEmail(text)}
+        />
+        <View style={{margin:10}} />
+        <CustomTextField 
+        placeholder="Password"
+        value={password}
+        onChangeText={(text)=> setPassword(text)}
+        secureTextEntry={true}
         />
       </View>
     </View> 
