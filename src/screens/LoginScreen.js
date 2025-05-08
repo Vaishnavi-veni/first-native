@@ -35,6 +35,12 @@ const LoginScreen = () => {
         onChangeText={(text)=> setPassword(text)}
         secureTextEntry={true}
         />
+        <View style={{margin:10}} />
+        <Text
+        style={{
+          alignSelf:'flex-end',
+          paddingRight:10
+        }}>Forgot Password?</Text>
       </View>
     </View> 
   );
