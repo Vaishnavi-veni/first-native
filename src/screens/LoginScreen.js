@@ -41,7 +41,12 @@ const LoginScreen = () => {
           alignSelf:'flex-end',
           paddingRight:10
         }}>Forgot Password?</Text>
+        <View alignItems='center' marginTop='20'><CustomButton title='Login'>
+
+</CustomButton></View>
+        
       </View>
+      
     </View> 
   );
 };

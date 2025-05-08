@@ -13,12 +13,14 @@ export default CustomButton
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: "#604652",
+      width:'80%',
+        backgroundColor: "#4C6ED7",
         padding: 12,
         borderRadius: 8,
-        width: 150,
+        // width: 150,
         alignItems: "center",
-        marginBottom: 15
+        marginBottom: 15,
+
       },
       buttonText: {
         color: "#fff",
