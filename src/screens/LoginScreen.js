@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
 import { globalStyles } from "../constants/styles";
+import { useNavigation } from '@react-navigation/native';
+
 import CustomTextField from "../components/CustomTextField";
 import CustomButton from "../components/CustomButton";
 
 const LoginScreen = () => {
   const [email,setEmail]= useState('');
   const [password,setPassword]= useState('');
+  const navigation=useNavigation();
 
   return (
     <View style={styles.container}>
@@ -53,7 +56,9 @@ const LoginScreen = () => {
         }}>Forgot Password?</Text>
         
          <View alignItems='center' marginTop='40'>
-          <CustomButton title='Login'>
+          <CustomButton 
+          title='Login'
+          onPress={() => navigation.navigate('Register')}>
           </CustomButton>
           
           <Text style={{marginTop:30}}>Don't have an account? 

@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';  // Import your screens here
 import AnotherScreen from '../screens/AnotherScreen';
 import LandingScreen from '../screens/landingScree';  // Ensure correct screen import
 import LoginScreen from '../screens/LoginScreen';
+import Register from '../screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function AppNavigator() {
         <Stack.Screen name="Another" component={AnotherScreen} />
         <Stack.Screen name="Landing" component={LandingScreen} options={{headerShown: false}} />
         <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+        <Stack.Screen name='Register' component={Register} options={{headerShown:false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
