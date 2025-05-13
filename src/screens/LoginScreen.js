@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, View, StyleSheet, Text } from "react-native";
+import { Image, View, StyleSheet, Text, Alert } from "react-native";
 import { globalStyles } from "../constants/styles";
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,7 +9,47 @@ import CustomButton from "../components/CustomButton";
 const LoginScreen = () => {
   const [email,setEmail]= useState('');
   const [password,setPassword]= useState('');
+  const [emailError,setEmailError]= useState('');
+  const [passwordError, setPasswordError]=useState('');
+
   const navigation=useNavigation();
+
+  const validateForm = () =>{
+    let isValid = true;
+
+    if (!email) {
+      setEmailError("Email is required");
+      isValid=false;
+    } else if(!/\S+@\S+\.\S+/.test(email)){
+      setEmailError('Enter a valid email address');
+      isValid=false
+    } else {
+      setEmailError('');
+    }
+
+    if (!password){
+      setPasswordError("Password is required");
+      isValid=false;
+    } else if(password.length < 6){
+      setPasswordError("Password length should be atleast 6");
+    } else{
+      setPasswordError('');
+    }
+
+    return isValid;
+
+  }
+
+  const handleLogin = () =>{
+    const isFormValid = validateForm();
+
+    if(isFormValid){
+      console.log('Email:',email);
+      console.log('Password',password);
+      Alert.alert("Form is valid");
+      navigation.navigate('Register');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -33,17 +73,25 @@ const LoginScreen = () => {
         <CustomTextField 
         placeholder="Email"
         value={email}
-        onChangeText={(text)=> setEmail(text)}
+        onChangeText={(text)=> {
+          setEmail(text); 
+          setEmailError('');
+        }}
         />
+        {emailError ? <Text>{emailError}</Text> : null}
 
         <View style={{margin:10}} />
 
         <CustomTextField 
         placeholder="Password"
         value={password}
-        onChangeText={(text)=> setPassword(text)}
+        onChangeText={(text)=> {
+          setPassword(text);
+          setPasswordError('');
+        }}
         secureTextEntry={true}
         />
+        {passwordError ? <Text>{passwordError}</Text> : null}
 
         <View style={{margin:5}} />
 
@@ -58,7 +106,9 @@ const LoginScreen = () => {
          <View alignItems='center' marginTop='40'>
           <CustomButton 
           title='Login'
-          onPress={() => navigation.navigate('Register')}>
+          // onPress={() => navigation.navigate('Register')}
+          onPress={handleLogin}
+          >
           </CustomButton>
           
           <Text style={{marginTop:30}}>Don't have an account? 
