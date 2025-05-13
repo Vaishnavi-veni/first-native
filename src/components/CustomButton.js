@@ -14,16 +14,16 @@ export default CustomButton
 const styles = StyleSheet.create({
     button: {
       width:'80%',
+      height:'28%',
         backgroundColor: "#4C6ED7",
-        padding: 12,
         borderRadius: 8,
-        // width: 150,
         alignItems: "center",
-        marginBottom: 15,
+        justifyContent:"center"
+
 
       },
       buttonText: {
         color: "#fff",
-        fontWeight: "bold",
+        fontSize:14
       },
 })
