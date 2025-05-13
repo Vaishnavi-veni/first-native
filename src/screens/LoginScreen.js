@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Image, View, StyleSheet, Text, Alert } from "react-native";
 import { globalStyles } from "../constants/styles";
 import { useNavigation } from '@react-navigation/native';
 
 import CustomTextField from "../components/CustomTextField";
 import CustomButton from "../components/CustomButton";
+import { loginUser } from "../controller/authController";
 
 const LoginScreen = () => {
   const [email,setEmail]= useState('');
   const [password,setPassword]= useState('');
   const [emailError,setEmailError]= useState('');
   const [passwordError, setPasswordError]=useState('');
+  const [formValid, setFormValid] = useState(false);
 
   const navigation=useNavigation();
+
+  useEffect (()=>{
+    const isEmailValid =/\S+@\S+\.\S+/.test(email);
+    const isPasswordValid = password.length >= 6;
+
+    setFormValid(email&& password && isEmailValid && isPasswordValid);
+  },[email,password]);
 
   const validateForm = () =>{
     let isValid = true;
@@ -40,15 +49,26 @@ const LoginScreen = () => {
 
   }
 
-  const handleLogin = () =>{
+  const handleLogin = async() =>{
     const isFormValid = validateForm();
 
     if(isFormValid){
-      console.log('Email:',email);
-      console.log('Password',password);
-      Alert.alert("Form is valid");
-      navigation.navigate('Register');
+    try{
+      const result = await loginUser(email,password);
+
+      if(result.success){
+        console.log('Login successful, token:',result.token);
+        Alert.alert("Login successful");
+
+        navigation.navigate('Register');
+      }else{
+        Alert.alert("Login Failed",result.message);
+      }
+    } catch (error){
+      Alert.alert("Error","Something went wrong");
+      console.error(error);
     }
+  }
   };
 
   return (
@@ -108,6 +128,7 @@ const LoginScreen = () => {
           title='Login'
           // onPress={() => navigation.navigate('Register')}
           onPress={handleLogin}
+          disabled={!formValid}
           >
           </CustomButton>
           
