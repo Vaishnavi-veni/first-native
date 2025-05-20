@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, View, StyleSheet, Text, Alert } from "react-native";
+import { Image, View, StyleSheet, Text, Alert, Touchable, TouchableOpacity } from "react-native";
 import { globalStyles } from "../constants/styles";
 import { useNavigation } from '@react-navigation/native';
 
@@ -132,9 +132,21 @@ const LoginScreen = () => {
           >
           </CustomButton>
           
-          <Text style={{marginTop:30}}>Don't have an account? 
-            <Text style={{color:'#4C6ED7', fontWeight:"bold"}}>  Register</Text>
-          </Text>
+          {/* <Text style={{marginTop:30}}>Don't have an account? 
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('Register')}>
+              <Text style={{color:'#4C6ED7', fontWeight:"bold",}}>  Register</Text>
+            </TouchableOpacity>
+            
+          </Text> */}
+
+          <View style={{ flexDirection: 'row', marginTop: 30, justifyContent: 'center' }}>
+            <Text>Don't have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+              <Text style={{ color: '#4C6ED7', fontWeight: "bold", marginLeft: 5 }}>Register</Text>
+            </TouchableOpacity>
+          </View>
+
         </View>
         
       </View>
